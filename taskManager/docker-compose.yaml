@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  manager:
+    build:
+      context: .
+    container_name: manager  
+    # command: python -u AdminTask.py
+    networks:
+      - managers
+    depends_on:
+      - mongo
+    ports:
+      - 5000:5000
+  
+  mongo:
+    image: mongo
+    container_name: mongo
+    networks:
+      - managers
+
+networks:
+  managers:
+    driver: bridge
+
+
+      

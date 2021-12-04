@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manager
+  labels:
+    app: manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manager
+  template:
+    metadata:
+      labels:
+        app: manager
+    spec:
+      containers: 
+        - name: manager
+          image: rohitnaikade264/task-manager
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
